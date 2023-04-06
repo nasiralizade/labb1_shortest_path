@@ -9,6 +9,7 @@
 void dfs(const adjacency_list_t &graph) {
     std::vector<bool> visited(graph.first.size(), false);
     stack s;
+
     s.push(graph.first.begin()->first);
     while (s.size()) {
         auto curr_node = s.pop();
@@ -16,7 +17,7 @@ void dfs(const adjacency_list_t &graph) {
             continue;
         }
         visited[curr_node] = true;
-        for (auto edge: graph.second) {
+        for (const auto &edge: graph.second) {
             if (edge.n1 == curr_node && !visited[edge.n2]) {
                 s.push(edge.n2);
             }
@@ -26,7 +27,7 @@ void dfs(const adjacency_list_t &graph) {
         std::cout << "DFS traversal is valid\n";
     } else {
         std::cout << "DFS traversal is invalid\n";
-        for (size_t node_id = 0; node_id < visited.size(); ++node_id) {
+        for (int node_id = 0; node_id < visited.size(); ++node_id) {
             if (!visited[node_id]) {
                 std::cerr << "Node " << graph.first.find(node_id)->second << " (id=" << graph.first.find(node_id)->first
                           << ") is not visited\n";

@@ -6,8 +6,5 @@
 #define LABB1_BFS_H
 #include "reader.h"
 void bfs(const adjacency_list_t &list);
-
-std::vector<node_id_t> getUnvisitedNeighboursBfs(node_id_t curr, const adjacency_list_t &pair, std::vector<bool> visited);
-bool isVisitedBfs(node_id_t node, const std::vector<bool> &visited) ;
-bool isAllVisitedBfs(const std::vector<bool> &visited) ;
+bool is_all_visited_bfs(const std::vector<bool> &visited);
 #endif //LABB1_BFS_H

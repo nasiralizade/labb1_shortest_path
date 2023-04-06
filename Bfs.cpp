@@ -26,7 +26,7 @@ void bfs(const adjacency_list_t &list) {
         std::cout << "BFS traversal is valid\n";
     } else {
         std::cout << "BFS traversal is invalid\n";
-        for (size_t node_id = 0; node_id < visited.size(); ++node_id) {
+        for (int node_id = 0; node_id < visited.size(); ++node_id) {
             if (!visited[node_id]) {
                 std::cerr << "Node " << list.first.find(node_id)->second << " (id=" << list.first.find(node_id)->first
                           << ") is not visited\n";
@@ -35,6 +35,3 @@ void bfs(const adjacency_list_t &list) {
     }
 }
 
-bool isAllVisitedBfs(const std::vector<bool> &visited) {
-    return (std::find(visited.begin(), visited.end(), false) == visited.end());
-}

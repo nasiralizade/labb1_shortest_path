@@ -8,11 +8,12 @@
 #include <iostream>
 #include <limits>
 
-// Create a priority queue to hold the nodes to be visited, sorted by distance(weight)
-using priority_queue_t = std::priority_queue<std::pair<int, node_id_t>, std::vector<std::pair<int, node_id_t>>, std::greater<>>;
+//priority queue to hold the nodes to be visited, sorted by distance(weight)
+using priority_queue_t = std::priority_queue<std::pair<double, node_id_t>, std::vector<std::pair<double, node_id_t>>, std::greater<>>;
+
 void dijkstra(const adjacency_list_t &graph, node_id_t start, node_id_t end) {
-    // Create a vector to hold the distance to each node from the start node
-    constexpr double INF=std::numeric_limits<double>::max();
+    //vector to hold the distance to each node from the start node
+    auto INF=std::numeric_limits<double>::max();
     std::vector<double> distance(graph.first.size(), INF);
 
     //  A vector to hold the parent node of each node in the shortest path
@@ -20,7 +21,7 @@ void dijkstra(const adjacency_list_t &graph, node_id_t start, node_id_t end) {
 
     priority_queue_t pq;
 
-    //lägg start nodet  i kön med längden 0
+    //lägg start node i kön med längden 0
     pq.emplace(0, start);
     distance[start] = 0;
 
