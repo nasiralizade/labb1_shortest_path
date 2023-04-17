@@ -4,10 +4,9 @@
 #include "Dfs.h"
 #include "Bfs.h"
 #include "Dijkstras.h"
-void menu(const adjacency_list_t& test);
 
+void menu(const adjacency_list_t& test);
 int main() {
-    std::vector<int> v(200);
     //grafen är inte sammanhängande, node 19 går till node 3, men ingen node som går till 19
     //mellan Nackstavägen till Förrådet
     //start node 23 och slut node 37
@@ -44,9 +43,15 @@ void menu(const adjacency_list_t& test) {
         }
 
         if (choice == 1) {
-            dfs(test);
+            if (verifyMatrix(test)){
+                std::cout<<"valid\n";
+            } else std::cout<<"invalid\n";
+            //dfs(test);
         } else if (choice == 2) {
-            bfs(test);
+            for (int i = 0; i < test.first.size(); ++i) {
+                bfs(i,test);
+            }
+            //bfs(test);
         } else if (choice == 3) {
             int start, end;
             std::cout << "Enter the start node id: ";

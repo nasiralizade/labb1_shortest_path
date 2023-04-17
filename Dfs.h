@@ -23,7 +23,11 @@ struct stack {
 };
 
 
-void dfs(const adjacency_list_t& graph);
+
+void dfs(int start,std::vector<bool>&visited, adjacency_list_t& graph);
+bool verifyMatrix(adjacency_list_t test);
 bool is_all_visited(const std::vector<bool>& visited);
+//void resetVisited(std::vector<bool> visited);
+//void dfs2(const adjacency_list_t& graph);
 
 #endif //LABB1_DFS_H

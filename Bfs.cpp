@@ -7,15 +7,18 @@
 #include <vector>
 #include <iostream>
 
-void bfs(const adjacency_list_t &list) {
+void bfs(int start,const adjacency_list_t &list) {
+
     std::vector<bool> visited(list.first.size(), false);
     std::queue<node_id_t> q;
-    q.push(list.first.begin()->first);
+    q.push(start);
     visited[q.front()] = true;
     while (!q.empty()) {
         node_id_t curr = q.front();
         q.pop();
+        //kollar grannar till den nuvarande node
         for (auto &edge: list.second) {
+            //om det finns grannar och dem är ej visited, lägg den i kön
             if (edge.n1 == curr && !visited[edge.n2]) {
                 q.push(edge.n2);
                 visited[edge.n2] = true;
@@ -34,4 +37,6 @@ void bfs(const adjacency_list_t &list) {
         }
     }
 }
+
+
 

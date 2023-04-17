@@ -13,20 +13,17 @@ using priority_queue_t = std::priority_queue<std::pair<double, node_id_t>, std::
 
 void dijkstra(const adjacency_list_t &graph, node_id_t start, node_id_t end) {
     //vector to hold the distance to each node from the start node
-    auto INF=std::numeric_limits<double>::max();
+    auto INF = std::numeric_limits<double>::max();
     std::vector<double> distance(graph.first.size(), INF);
 
     //  A vector to hold the parent node of each node in the shortest path
     std::vector<node_id_t> parent(graph.first.size(), -1);
-
     priority_queue_t pq;
-
     //lägg start node i kön med längden 0
     pq.emplace(0, start);
     distance[start] = 0;
-
+    
     while (!pq.empty()) {
-
         //hämta nodet med kortaste längden från start noden
         node_id_t curr_node = pq.top().second;
         pq.pop();
@@ -34,15 +31,14 @@ void dijkstra(const adjacency_list_t &graph, node_id_t start, node_id_t end) {
         if (curr_node == end) {
             break;
         }
-
         // Check all neighbors of the current node
-        for (const auto& [n1,n2,weight,description]:graph.second) {
-            if (n1==curr_node){
-                double new_distance=distance[curr_node]+weight;
-                if (new_distance < distance[n2]){
-                    distance[n2]=new_distance;
-                    parent[n2]=curr_node;
-                    pq.emplace(new_distance,n2);
+        for (const auto &[n1, n2, weight, description]: graph.second) {
+            if (n1 == curr_node) {
+                double new_distance = distance[curr_node] + weight;
+                if (new_distance < distance[n2]) {
+                    distance[n2] = new_distance;
+                    parent[n2] = curr_node;
+                    pq.emplace(new_distance, n2);
                 }
             }
         }
