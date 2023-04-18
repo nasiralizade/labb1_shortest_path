@@ -1,3 +1,10 @@
+/*
+ * Namn: Nasir Alizade
+ * Labb: Labb1
+ * E-post: naal2001@student.miun.se
+ */
+
+
 #include <iostream>
 #include <vector>
 #include "reader.h"

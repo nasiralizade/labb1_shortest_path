@@ -25,9 +25,12 @@ void bfs(int start,const adjacency_list_t &list) {
             }
         }
     }
-    if (std::all_of(visited.begin(), visited.end(), [](bool v) { return v; })) {
+    /*if (std::all_of(visited.begin(), visited.end(), [](bool v) { return v; })) {
         std::cout << "BFS traversal is valid\n";
-    } else {
+    }*/
+    if (std::find(visited.begin(),visited.end(), false)==visited.end()){
+        std::cout << "BFS traversal is valid\n";
+    }else {
         std::cout << "BFS traversal is invalid\n";
         for (int node_id = 0; node_id < visited.size(); ++node_id) {
             if (!visited[node_id]) {

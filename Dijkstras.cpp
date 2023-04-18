@@ -13,7 +13,7 @@ using priority_queue_t = std::priority_queue<std::pair<double, node_id_t>, std::
 
 void dijkstra(const adjacency_list_t &graph, node_id_t start, node_id_t end) {
     //vector to hold the distance to each node from the start node
-    auto INF = std::numeric_limits<double>::max();
+    auto INF = std::numeric_limits<double>::infinity();
     std::vector<double> distance(graph.first.size(), INF);
 
     //  A vector to hold the parent node of each node in the shortest path
